@@ -29,8 +29,8 @@ app:
     beautifulsoup4
     chromadb
     colorama
-    faiss-cpu
     fastapi
+    faiss-cpu
     flake8
     flask
     httpx
@@ -42,11 +42,11 @@ app:
     numpy
     openai
     pandas
-    prompt-toolkit
-    pypdf
     pyright
     python-dotenv
     python-multipart
+    prompt-toolkit
+    pypdf
     requests
     tiktoken
     uvicorn

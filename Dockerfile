@@ -1,4 +1,4 @@
-FROM gradle:8.10-jdk21-alpine AS cache
+FROM gradle:8.10-jdk21-alpine@sha256:8721f7ba7260103b5157925e2666c6fd611e7741905fb032dfa8dbd8d12f4b2e AS cache
 
 WORKDIR /home/gradle/src
 ENV GRADLE_USER_HOME="/cache"
@@ -6,7 +6,7 @@ COPY build.gradle settings.gradle ./
 # just pull dependencies for cache
 RUN gradle --no-daemon build --stacktrace
 
-FROM gradle:8.10-jdk21-alpine AS builder
+FROM gradle:8.10-jdk21-alpine@sha256:8721f7ba7260103b5157925e2666c6fd611e7741905fb032dfa8dbd8d12f4b2e AS builder
 
 COPY --from=cache /cache /home/gradle/.gradle
 COPY --chown=gradle:gradle . /home/gradle/src
@@ -16,7 +16,7 @@ RUN gradle --no-daemon build --stacktrace -PdisableCompression=true -x test
 
 RUN mkdir /build && tar -xf /home/gradle/src/build/distributions/ai-dial-app-controller*.tar --strip-components=1 -C /build
 
-FROM eclipse-temurin:21-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine@sha256:4909fb9ab52e3ce1488cc6e6063da71a0f9f9833420cc254fe03bbe25daec9e0
 
 ENV OTEL_TRACES_EXPORTER="none"
 ENV OTEL_METRICS_EXPORTER="none"

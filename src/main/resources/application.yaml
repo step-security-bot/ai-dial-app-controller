@@ -29,10 +29,11 @@ app:
     beautifulsoup4
     chromadb
     colorama
-    fastapi
     faiss-cpu
+    fastapi
     flake8
     flask
+    httpx
     inquirer
     langchain
     langchain-community
@@ -41,11 +42,11 @@ app:
     numpy
     openai
     pandas
+    prompt-toolkit
+    pypdf
     pyright
     python-dotenv
     python-multipart
-    prompt-toolkit
-    pypdf
     requests
     tiktoken
     uvicorn
